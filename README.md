@@ -4,10 +4,11 @@
     src="https://arcjet.com/arcjet-logo-minimal-light-mark-all.svg" alt="Arcjet
   Logo" height="128" width="auto"> </picture> </a>
 
-# Arcjet JS Example
+# Arcjet JS example app
 
-Arcjet helps developers protect their apps in just a few lines of code. This is
-an example application demonstrating the use of multiple features.
+[Arcjet](https://arcjet.com) helps developers protect their apps in just a few
+lines of code. This is an example application demonstrating the use of multiple
+features.
 
 This example is deployed at
 [https://example.arcjet.com](https://example.arcjet.com).
