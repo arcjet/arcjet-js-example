@@ -61,19 +61,7 @@ export default async function IndexPage() {
         </Link>{" "}
         e.g. to set a limit based on the authenticated user.
       </p>
-      {session ? (
-        <>
-          <p className="max-w-[700px]">
-            <SignOut />
-          </p>
-        </>
-      ) : (
-        <>
-          <p className="max-w-[700px]">
-            <SignIn />
-          </p>
-        </>
-      )}
+      {session ? <SignOut /> : <SignIn />}
     </section>
   );
 }

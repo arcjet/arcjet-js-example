@@ -18,7 +18,7 @@ export default function IndexPage() {
           </Link>{" "}
           which includes:
         </p>
-        <ul className="max-w-[700px] list-disc list-outside ms-8">
+        <ul className="ms-8 max-w-[700px] list-outside list-disc">
           <li>
             Arcjet server-side email verification configured to block disposable
             providers and ensure that the domain has a valid MX record.
@@ -35,7 +35,7 @@ export default function IndexPage() {
 
       <h2 className="text-xl font-bold">Test emails</h2>
       <p>Try these emails to see how it works:</p>
-      <ul className="list-disc list-outside ms-8">
+      <ul className="ms-8 list-outside list-disc">
         <li>
           <code>invalid.@arcjet</code> is an invalid email address.
         </li>

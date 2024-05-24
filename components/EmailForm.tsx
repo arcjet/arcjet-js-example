@@ -78,7 +78,7 @@ export function EmailForm() {
                 />
               </FormControl>
               <FormDescription>
-                Just a test form - you won't receive any emails.
+                Just a test form - you won&apos;t receive any emails.
               </FormDescription>
               <FormMessage />
               {errors.root?.serverError && (

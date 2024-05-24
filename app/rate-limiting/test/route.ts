@@ -32,7 +32,7 @@ function getClient(session: Session | null) {
         mode: "LIVE",
         max: 5,
         window: "60s",
-      })
+      }),
     );
   } else {
     return aj.withRule(
@@ -40,7 +40,7 @@ function getClient(session: Session | null) {
         mode: "LIVE",
         max: 2,
         window: "60s",
-      })
+      }),
     );
   }
 }
@@ -89,18 +89,18 @@ export async function POST(req: Request) {
     if (decision.reason.isRateLimit()) {
       return NextResponse.json(
         { error: `HTTP 429: Too many requests. ${message}`, ip: decision.ip },
-        { status: 429, headers }
+        { status: 429, headers },
       );
     } else {
       return NextResponse.json(
         { error: "Forbidden", ip: decision.ip },
-        { status: 403, headers }
+        { status: 403, headers },
       );
     }
   }
 
   return NextResponse.json(
     { message: `HTTP 200: OK. ${remaining} requests remaining. ${message}` },
-    { status: 200, headers }
+    { status: 200, headers },
   );
 }

@@ -23,10 +23,10 @@ export function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0"
+                  "w-9 px-0",
                 )}
               >
-                <Icons.gitHub className="h-4 w-4" />
+                <Icons.gitHub className="size-4" />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>

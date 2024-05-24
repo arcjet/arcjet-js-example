@@ -38,7 +38,7 @@ export default function IndexPage() {
       <h2 className="text-xl font-bold">Try it</h2>
       <p>Simulate an attack using curl:</p>
       <pre className="p-4">
-        curl -v -H "x-arcjet-suspicious: true"
+        curl -v -H &quot;x-arcjet-suspicious: true&quot;
         https://example.arcjet.com/attack/test
       </pre>
       <p className="max-w-[700px]">

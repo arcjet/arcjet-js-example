@@ -44,7 +44,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: "Invalid request", error },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -79,7 +79,7 @@ export async function POST(req: Request) {
 
       return NextResponse.json(
         { message, reason: decision.reason },
-        { status: 400 }
+        { status: 400 },
       );
     } else if (decision.reason.isRateLimit()) {
       const reset = decision.reason.resetTime;
@@ -90,7 +90,7 @@ export async function POST(req: Request) {
             message: "Too many requests. Please try again later.",
             reason: decision.reason,
           },
-          { status: 429 }
+          { status: 429 },
         );
       }
 
@@ -104,7 +104,7 @@ export async function POST(req: Request) {
             message: `Too many requests. Please try again in ${minutes} minutes.`,
             reason: decision.reason,
           },
-          { status: 429 }
+          { status: 429 },
         );
       } else {
         return NextResponse.json(
@@ -112,7 +112,7 @@ export async function POST(req: Request) {
             message: `Too many requests. Please try again in ${seconds} seconds.`,
             reason: decision.reason,
           },
-          { status: 429 }
+          { status: 429 },
         );
       }
     } else {

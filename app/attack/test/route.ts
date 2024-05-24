@@ -32,7 +32,7 @@ export async function GET(req: Request) {
   if (decision.isDenied()) {
     return NextResponse.json(
       { error: "Forbidden", ip: decision.ip },
-      { status: 403 }
+      { status: 403 },
     );
   }
 
