@@ -27,11 +27,6 @@ This example is deployed at
   Shield, which detects suspicious behavior, such as SQL injection and
   cross-site scripting attacks.
 
-This example shows how to protect a Next.js React Hook Form with [Arcjet signup
-form protection](https://docs.arcjet.com/signup-protection/concepts). It uses
-[shadcn/ui](https://ui.shadcn.com/) form components to build the [React Hook
-Form](https://react-hook-form.com/) with both client and server side validation.
-
 ## Deploy it now
 
 [![Deploy with
