@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Dependencies in our packages
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      # Our dependencies should be checked daily
+      interval: daily
+    assignees:
+      - davidmytton
+    reviewers:
+      - davidmytton
+    commit-message:
+      prefix: deps
+      prefix-development: deps(dev)
+    ignore:
+      - dependency-name: eslint
+        versions: [">=9"]

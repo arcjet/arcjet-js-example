@@ -1,0 +1,73 @@
+<a href="https://arcjet.com" target="_arcjet-home"> <picture> <source
+  media="(prefers-color-scheme: dark)"
+    srcset="https://arcjet.com/arcjet-logo-minimal-dark-mark-all.svg"> <img
+    src="https://arcjet.com/arcjet-logo-minimal-light-mark-all.svg" alt="Arcjet
+  Logo" height="128" width="auto"> </picture> </a>
+
+# Arcjet JS Example
+
+Arcjet helps developers protect their apps in just a few lines of code. This is
+an example application demonstrating the use of multiple features.
+
+This example is deployed at
+[https://example.arcjet.com](https://example.arcjet.com).
+
+## Features
+
+- [Signup form protection](https://example.arcjet.com/signup) uses Arcjet's
+  server-side email verification configured to block disposable providers and
+  ensure that the domain has a valid MX record. It also includes rate limiting
+  and bot protection to prevent automated abuse.
+- [Bot protection](https://example.arcjet.com/bots) shows how a page can be
+  protected from automated clients.
+- [Rate limiting](https://example.arcjet.com/rate-limiting) shows the use of
+  different rate limit configurations depending on the authenticated user. A
+  logged-in user can make more requests than an anonymous user.
+- [Attack protection](https://example.arcjet.com/attack) demonstrates Arcjet
+  Shield, which detects suspicious behavior, such as SQL injection and
+  cross-site scripting attacks.
+
+This example shows how to protect a Next.js React Hook Form with [Arcjet signup
+form protection](https://docs.arcjet.com/signup-protection/concepts). It uses
+[shadcn/ui](https://ui.shadcn.com/) form components to build the [React Hook
+Form](https://react-hook-form.com/) with both client and server side validation.
+
+## Deploy it now
+
+[![Deploy with
+Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farcjet%2Farcjet-js-example&project-name=arcjet-example&repository-name=arcjet-example&developer-id=oac_1GEcKBuKBilVnjToj1QUwdb8&demo-title=Arcjet%20Example%20&demo-description=Example%20rate%20limiting%2C%20bot%20protection%2C%20email%20verification%20%26%20form%20protection.&demo-url=https%3A%2F%2Fgithub.com%2Farcjet%2Farcjet-js-example&demo-image=https%3A%2F%2Fapp.arcjet.com%2Fimg%2Fexample-apps%2Fvercel%2Fdemo-image.jpg&integration-ids=oac_1GEcKBuKBilVnjToj1QUwdb8&external-id=arcjet-js-example)
+
+## Run locally
+
+1. [Register for a free Arcjet account](https://app.arcjet.com).
+
+2. Install dependencies:
+
+```bash
+npm ci
+```
+
+3. Rename `.env.local.example` to `.env.local` and add your Arcjet key. If you
+   want to test the rate limiting authentication, you will also need to add an
+   Auth.js secret and [create a GitHub OAuth
+   app](https://authjs.dev/guides/configuring-github).
+
+4. Start the dev server
+
+```bash
+npm run dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Stack
+
+- Auth: [Auth.js](https://authjs.dev/)
+- App: [Next.js](https://nextjs.org/)
+- UI: [shadcn/ui](https://ui.shadcn.com/)
+- Form handling: [React Hook Form](https://react-hook-form.com/) (see also [our
+  full form protection
+  example](https://github.com/arcjet/arcjet-js/tree/main/examples/nextjs-14-react-hook-form))
+- Client-side validation: [Zod](https://zod.dev/)
+- Security: [Arcjet](https://arcjet.com/)
+- Platform: [Vercel](https://vercel.com/) (see [our integration](https://vercel.com/integrations/arcjet))
