@@ -34,7 +34,7 @@ export default async function IndexPage() {
       <h2 className="text-xl font-bold">Try it</h2>
       <RLForm />
 
-      {session ? (
+      {session?.user ? (
         <>
           <p className="text-green-500">
             You are authenticated as {session.user?.email}. The limit is set to
