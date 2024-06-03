@@ -61,7 +61,7 @@ export default async function IndexPage() {
         </Link>{" "}
         e.g. to set a limit based on the authenticated user.
       </p>
-      {session ? <SignOut /> : <SignIn />}
+      {session?.user ? <SignOut /> : <SignIn />}
     </section>
   );
 }
