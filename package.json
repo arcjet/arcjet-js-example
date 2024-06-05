@@ -30,7 +30,7 @@
   "dependencies": {
     "@arcjet/decorate": "^1.0.0-alpha.13",
     "@arcjet/next": "latest",
-    "@hookform/resolvers": "^3.4.2",
+    "@hookform/resolvers": "^3.5.0",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
