@@ -1,10 +1,11 @@
-<a href="https://arcjet.com" target="_arcjet-home"> <picture> <source
-  media="(prefers-color-scheme: dark)"
-    srcset="https://arcjet.com/arcjet-logo-minimal-dark-mark-all.svg"> <img
-    src="https://arcjet.com/arcjet-logo-minimal-light-mark-all.svg" alt="Arcjet
-  Logo" height="128" width="auto"> </picture> </a>
+<a href="https://arcjet.com" target="_arcjet-home">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://arcjet.com/logo/arcjet-dark-lockup-voyage-horizontal.svg">
+    <img src="https://arcjet.com/logo/arcjet-light-lockup-voyage-horizontal.svg" alt="Arcjet Logo" height="128" width="auto">
+  </picture>
+</a>
 
-# Arcjet JS example app
+# Arcjet example app
 
 [Arcjet](https://arcjet.com) helps developers protect their apps in just a few
 lines of code. This is an example application demonstrating the use of multiple
