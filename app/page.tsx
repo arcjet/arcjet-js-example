@@ -9,9 +9,13 @@ export default function IndexPage() {
           Arcjet example app
         </h1>
         <p className="max-w-[700px]">
-          <a href="https://arcjet.com" className="underline">
+          <Link
+            href="https://arcjet.com"
+            target="_blank"
+            className="hover:underline font-bold decoration-1 underline-offset-2"
+          >
             Arcjet
-          </a>{" "}
+          </Link>{" "}
           helps developers protect their apps in just a few lines of code.
           Implement rate limiting, bot protection, email verification & defend
           against common attacks.
@@ -22,6 +26,7 @@ export default function IndexPage() {
             href="https://github.com/arcjet/arcjet-js-example"
             target="_blank"
             rel="noreferrer"
+            className="hover:underline font-bold decoration-1 underline-offset-2"
           >
             on GitHub
           </Link>

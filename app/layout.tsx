@@ -21,11 +21,20 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
 
-  /*icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },*/
+  icons: [
+    {
+      rel: "icon",
+      type: "image/x-icon",
+      url: "/favicon.png",
+      media: "(prefers-color-scheme: dark)",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      url: "/favicon-light.png",
+      media: "(prefers-color-scheme: light)",
+    },
+  ],
 };
 
 interface RootLayoutProps {
