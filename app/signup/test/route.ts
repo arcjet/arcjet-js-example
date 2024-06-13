@@ -1,39 +1,34 @@
 import { formSchema } from "@/lib/formSchema";
-import arcjet, { protectSignup } from "@arcjet/next";
+import arcjet, { protectSignup } from "@/lib/arcjet";
 import { NextResponse } from "next/server";
 
-const aj = arcjet({
-  // Get your site key from https://app.arcjet.com
-  // and set it as an environment variable rather than hard coding.
-  // See: https://nextjs.org/docs/app/building-your-application/configuring/environment-variables
-  key: process.env.ARCJET_KEY,
-  rules: [
-    // Arcjet's protectSignup rule is a combination of email validation, bot
-    // protection and rate limiting. Each of these can also be used separately
-    // on other routes e.g. rate limiting on a login route. See
-    // https://docs.arcjet.com/get-started
-    protectSignup({
-      email: {
-        mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-        // Block emails that are disposable, invalid, or have no MX records
-        block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
-      },
-      bots: {
-        mode: "LIVE",
-        // Block clients that we are sure are automated
-        block: ["AUTOMATED"],
-      },
-      // It would be unusual for a form to be submitted more than 5 times in 10
-      // minutes from the same IP address
-      rateLimit: {
-        // uses a sliding window rate limit
-        mode: "LIVE",
-        interval: "2m", // counts requests over a 10 minute sliding window
-        max: 5, // allows 5 submissions within the window
-      },
-    }),
-  ],
-});
+// Add rules to the base Arcjet instance outside of the handler function
+const aj = arcjet.withRule(
+  // Arcjet's protectSignup rule is a combination of email validation, bot
+  // protection and rate limiting. Each of these can also be used separately
+  // on other routes e.g. rate limiting on a login route. See
+  // https://docs.arcjet.com/get-started
+  protectSignup({
+    email: {
+      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+      // Block emails that are disposable, invalid, or have no MX records
+      block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
+    },
+    bots: {
+      mode: "LIVE",
+      // Block clients that we are sure are automated
+      block: ["AUTOMATED"],
+    },
+    // It would be unusual for a form to be submitted more than 5 times in 10
+    // minutes from the same IP address
+    rateLimit: {
+      // uses a sliding window rate limit
+      mode: "LIVE",
+      interval: "2m", // counts requests over a 10 minute sliding window
+      max: 5, // allows 5 submissions within the window
+    },
+  })
+);
 
 export async function POST(req: Request) {
   const json = await req.json();

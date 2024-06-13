@@ -1,23 +1,16 @@
-import arcjet, { detectBot } from "@arcjet/next";
+import arcjet, { detectBot } from "@/lib/arcjet";
 import { NextResponse } from "next/server";
 
 // Opt out of caching
 export const dynamic = "force-dynamic";
 
-// Create an Arcjet instance outside of the handler function
-const aj = arcjet({
-  // Get your site key from https://app.arcjet.com
-  // and set it as an environment variable rather than hard coding.
-  // See: https://nextjs.org/docs/app/building-your-application/configuring/environment-variables
-  key: process.env.ARCJET_KEY,
-  rules: [
-    detectBot({
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-      block: ["AUTOMATED"], // blocks all automated clients
-    }),
-    // .. you can chain multiple rules
-  ],
-});
+// Add rules to the base Arcjet instance outside of the handler function
+const aj = arcjet.withRule(
+  detectBot({
+    mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+    block: ["AUTOMATED"], // blocks all automated clients
+  })
+);
 
 export async function GET(req: Request) {
   // The protect method returns a decision object that contains information
