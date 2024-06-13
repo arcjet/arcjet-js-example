@@ -1,9 +1,9 @@
-import { auth } from "@/lib/auth";
+import { RLForm } from "@/components/RLForm";
 import { SignIn } from "@/components/SignIn";
 import { SignOut } from "@/components/SignOut";
+import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { RLForm } from "@/components/RLForm";
 
 export const metadata: Metadata = {
   title: "Arcjet rate limit example",
@@ -24,7 +24,7 @@ export default async function IndexPage() {
           This page is protected by{" "}
           <Link
             href="https://docs.arcjet.com/bot-protection/concepts"
-            className="underline"
+            className="hover:underline font-bold decoration-1 underline-offset-2"
           >
             Arcjet&apos;s rate limiting
           </Link>
@@ -55,7 +55,7 @@ export default async function IndexPage() {
         Rate limits can be{" "}
         <Link
           href="https://docs.arcjet.com/reference/nextjs#ad-hoc-rules"
-          className="underline"
+          className="hover:underline font-bold decoration-1 underline-offset-2"
         >
           dynamically adjusted
         </Link>{" "}

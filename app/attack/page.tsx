@@ -18,7 +18,7 @@ export default function IndexPage() {
           This page is protected by{" "}
           <Link
             href="https://docs.arcjet.com/shield/concepts"
-            className="underline"
+            className="hover:underline font-bold decoration-1 underline-offset-2"
           >
             Arcjet Shield
           </Link>
@@ -28,7 +28,7 @@ export default function IndexPage() {
             href={
               "https://docs.arcjet.com/shield/concepts#which-attacks-will-arcjet-shield-block"
             }
-            className="underline"
+            className="hover:underline font-bold decoration-1 underline-offset-2"
           >
             suspicious behavior
           </Link>

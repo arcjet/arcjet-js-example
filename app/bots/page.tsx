@@ -18,7 +18,7 @@ export default function IndexPage() {
           This page is protected by{" "}
           <Link
             href="https://docs.arcjet.com/bot-protection/concepts"
-            className="underline"
+            className="hover:underline font-bold decoration-1 underline-offset-2"
           >
             Arcjet&apos;s bot protection
           </Link>{" "}
