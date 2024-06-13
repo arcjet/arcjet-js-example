@@ -28,7 +28,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@arcjet/decorate": "^1.0.0-alpha.14",
+    "@arcjet/decorate": "^1.0.0-alpha.15",
     "@arcjet/next": "latest",
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/react-label": "^2.0.2",
