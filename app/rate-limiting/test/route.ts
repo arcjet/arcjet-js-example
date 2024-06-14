@@ -1,26 +1,20 @@
 import { auth } from "@/lib/auth";
 import { setRateLimitHeaders } from "@arcjet/decorate";
-import arcjet, { fixedWindow, shield } from "@arcjet/next";
+import arcjet, { fixedWindow, shield } from "@/lib/arcjet";
 import type { Session } from "next-auth";
 import { NextResponse } from "next/server";
 
 // Opt out of caching
 export const dynamic = "force-dynamic";
 
-const aj = arcjet({
-  // Get your site key from https://app.arcjet.com and set it as an environment
-  // variable rather than hard coding. See:
-  // https://nextjs.org/docs/app/building-your-application/configuring/environment-variables
-  key: process.env.ARCJET_KEY,
-  rules: [
-    // Shield detects suspicious behavior, such as SQL injection and cross-site
-    // scripting attacks. We want to ru nit on every request
-    shield({
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-    }),
-    // .. you can chain multiple rules
-  ],
-});
+// Add rules to the base Arcjet instance outside of the handler function
+const aj = arcjet.withRule(
+  // Shield detects suspicious behavior, such as SQL injection and cross-site
+  // scripting attacks. We want to ru nit on every request
+  shield({
+    mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+  })
+);
 
 // Returns ad-hoc rules depending on whether the session is present. You could
 // inspect more details about the session to dynamically adjust the rate limit.

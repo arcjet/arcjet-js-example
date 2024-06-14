@@ -1,24 +1,17 @@
-import arcjet, { shield } from "@arcjet/next";
+import arcjet, { shield } from "@/lib/arcjet";
 import { NextResponse } from "next/server";
 
 // Opt out of caching
 export const dynamic = "force-dynamic";
 
-// Create an Arcjet instance outside of the handler function
-const aj = arcjet({
-  // Get your site key from https://app.arcjet.com
-  // and set it as an environment variable rather than hard coding.
-  // See: https://nextjs.org/docs/app/building-your-application/configuring/environment-variables
-  key: process.env.ARCJET_KEY,
-  rules: [
-    // Shield detects suspicious behavior, such as SQL injection and cross-site
-    // scripting attacks.
-    shield({
-      mode: "LIVE",
-    }),
-    // .. you can chain multiple rules
-  ],
-});
+// Add rules to the base Arcjet instance outside of the handler function
+const aj = arcjet.withRule(
+  // Shield detects suspicious behavior, such as SQL injection and cross-site
+  // scripting attacks.
+  shield({
+    mode: "LIVE"
+  })
+);
 
 export async function GET(req: Request) {
   // The protect method returns a decision object that contains information
