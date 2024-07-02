@@ -1,0 +1,10 @@
+.SiteHeader {
+  .Logo {
+    margin-left: calc(var(--sp) * -4.7);
+
+    .Image {
+      height: 30px;
+      width: "auto";
+    }
+  }
+}
