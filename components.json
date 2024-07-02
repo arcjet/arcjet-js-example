@@ -3,7 +3,7 @@
   "style": "default",
   "tailwind": {
     "config": "tailwind.config.js",
-    "css": "app/globals.css",
+    "css": "app/globals.scss",
     "baseColor": "slate",
     "cssVariables": true
   },

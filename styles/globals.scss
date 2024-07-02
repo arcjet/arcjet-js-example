@@ -34,6 +34,32 @@
     --ring: 256 9% 25%;
 
     --radius: 0.5rem;
+    --radius-sm: calc(var(--sp) * 0.6);
+
+    --sp: 8px;
+
+    .dark {
+      display: none;
+    }
+
+    .light {
+      display: block;
+    }
+
+    pre,
+    code {
+      border: 1px solid hsl(var(--border) / 0.6);
+      border-radius: var(--radius-sm);
+      width: min-content;
+    }
+
+    code {
+      padding: calc(var(--sp) * 0.2) calc(var(--sp) * 0.75);
+    }
+
+    pre {
+      padding: calc(var(--sp) * 0.35) calc(var(--sp) * 1);
+    }
   }
 
   .dark {
@@ -65,6 +91,14 @@
     --destructive-foreground: 0 0% 100%;
 
     --ring: 264 12% 75%;
+
+    .dark {
+      display: block;
+    }
+
+    .light {
+      display: none;
+    }
   }
 }
 
