@@ -1,10 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Form, FormMessage } from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { emptyFormSchema } from "@/lib/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -45,10 +44,10 @@ export function RLForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <Button type="submit">Push me</Button>
         {errors.root?.serverError && (
           <pre>{errors.root.serverError.message}</pre>
         )}
-        <Button type="submit">Push me</Button>
       </form>
     </Form>
   );
