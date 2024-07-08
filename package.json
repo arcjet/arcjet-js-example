@@ -44,7 +44,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.52.1",
     "styled-components": "^6.1.11",
-    "tailwind-merge": "^2.3.0",
+    "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
   },
