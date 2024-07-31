@@ -13,24 +13,29 @@ const aj = arcjet.withRule(
   // scripting attacks. We want to ru nit on every request
   shield({
     mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-  })
+  }),
 );
 
 // Returns ad-hoc rules depending on whether the session is present. You could
 // inspect more details about the session to dynamically adjust the rate limit.
 function getClient(session: Session | null) {
-  // If the user is logged in then give them a higher rate limit
+  // If the user is logged in then give them a higher rate limit and track the
+  // limit based on their user ID
   if (session?.user) {
     return aj.withRule(
       fixedWindow({
+        characteristics: ["userId"],
         mode: "LIVE",
         max: 5,
         window: "60s",
       }),
     );
   } else {
+    // If the user is not logged in then give them a lower rate limit and use
+    // the IP address to track them
     return aj.withRule(
       fixedWindow({
+        characteristics: ["ip.src"],
         mode: "LIVE",
         max: 2,
         window: "60s",
@@ -47,7 +52,9 @@ export async function POST(req: Request) {
 
   // The protect method returns a decision object that contains information
   // about the request.
-  const decision = await getClient(session).protect(req);
+  const decision = await getClient(session).protect(req, {
+    userId: session?.user?.id,
+  });
 
   console.log("Arcjet decision: ", decision);
 
