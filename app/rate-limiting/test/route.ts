@@ -53,7 +53,7 @@ export async function POST(req: Request) {
   // The protect method returns a decision object that contains information
   // about the request.
   const decision = await getClient(session).protect(req, {
-    userId: session?.user?.id,
+    userId: session?.user?.id!,
   });
 
   console.log("Arcjet decision: ", decision);
