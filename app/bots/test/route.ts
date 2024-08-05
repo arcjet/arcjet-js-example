@@ -1,5 +1,5 @@
 import arcjet, { detectBot } from "@/lib/arcjet";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 // Opt out of caching
 export const dynamic = "force-dynamic";
@@ -9,13 +9,14 @@ const aj = arcjet.withRule(
   detectBot({
     mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
     block: ["AUTOMATED"], // blocks all automated clients
-  })
+  }),
 );
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   // The protect method returns a decision object that contains information
   // about the request.
-  const decision = await aj.protect(req);
+  const fingerprint = req.ip!;
+  const decision = await aj.protect(req, { fingerprint });
 
   console.log("Arcjet decision: ", decision);
 

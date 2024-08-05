@@ -1,6 +1,6 @@
 import { formSchema } from "@/lib/formSchema";
 import arcjet, { protectSignup } from "@/lib/arcjet";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 // Add rules to the base Arcjet instance outside of the handler function
 const aj = arcjet.withRule(
@@ -27,10 +27,10 @@ const aj = arcjet.withRule(
       interval: "2m", // counts requests over a 10 minute sliding window
       max: 5, // allows 5 submissions within the window
     },
-  })
+  }),
 );
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const json = await req.json();
   const data = formSchema.safeParse(json);
 
@@ -45,7 +45,8 @@ export async function POST(req: Request) {
 
   const { email } = data.data;
 
-  const decision = await aj.protect(req, { email });
+  const fingerprint = req.ip!;
+  const decision = await aj.protect(req, { fingerprint, email });
 
   console.log("Arcjet decision: ", decision);
 

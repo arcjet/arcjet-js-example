@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { setRateLimitHeaders } from "@arcjet/decorate";
 import arcjet, { fixedWindow, shield } from "@/lib/arcjet";
 import type { Session } from "next-auth";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 // Opt out of caching
 export const dynamic = "force-dynamic";
@@ -44,15 +44,19 @@ function getClient(session: Session | null) {
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   // Get the session
   const session = await auth();
 
   console.log("Session: ", session);
 
+  // Use the user ID if the user is logged in, otherwise use the IP address
+  const fingerprint = session?.user?.id ?? req.ip!;
+
   // The protect method returns a decision object that contains information
   // about the request.
   const decision = await getClient(session).protect(req, {
+    fingerprint,
     userId: session?.user?.id!,
   });
 
