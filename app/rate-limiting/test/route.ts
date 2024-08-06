@@ -51,7 +51,6 @@ export async function POST(req: NextRequest) {
   // about the request.
   const decision = await getClient(session).protect(req, {
     fingerprint,
-    userId: session?.user?.id!,
   });
 
   console.log("Arcjet decision: ", decision);
