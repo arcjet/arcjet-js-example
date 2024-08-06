@@ -30,7 +30,6 @@ function getClient(session: Session | null) {
   } else {
     return aj.withRule(
       fixedWindow({
-        characteristics: ["ip.src"],
         mode: "LIVE",
         max: 2,
         window: "60s",
