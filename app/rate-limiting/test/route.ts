@@ -24,7 +24,6 @@ function getClient(session: Session | null) {
   if (session?.user) {
     return aj.withRule(
       fixedWindow({
-        characteristics: ["userId"],
         mode: "LIVE",
         max: 5,
         window: "60s",
