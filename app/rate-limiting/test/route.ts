@@ -19,8 +19,6 @@ const aj = arcjet.withRule(
 // Returns ad-hoc rules depending on whether the session is present. You could
 // inspect more details about the session to dynamically adjust the rate limit.
 function getClient(session: Session | null) {
-  // If the user is logged in then give them a higher rate limit and track the
-  // limit based on their user ID
   if (session?.user) {
     return aj.withRule(
       fixedWindow({
