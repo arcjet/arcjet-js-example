@@ -28,8 +28,6 @@ function getClient(session: Session | null) {
       }),
     );
   } else {
-    // If the user is not logged in then give them a lower rate limit and use
-    // the IP address to track them
     return aj.withRule(
       fixedWindow({
         characteristics: ["ip.src"],
