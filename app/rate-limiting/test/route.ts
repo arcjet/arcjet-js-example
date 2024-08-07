@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { setRateLimitHeaders } from "@arcjet/decorate";
 import arcjet, { fixedWindow, shield } from "@/lib/arcjet";
 import type { Session } from "next-auth";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 // Opt out of caching
 export const dynamic = "force-dynamic";
@@ -13,13 +13,12 @@ const aj = arcjet.withRule(
   // scripting attacks. We want to ru nit on every request
   shield({
     mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-  })
+  }),
 );
 
 // Returns ad-hoc rules depending on whether the session is present. You could
 // inspect more details about the session to dynamically adjust the rate limit.
 function getClient(session: Session | null) {
-  // If the user is logged in then give them a higher rate limit
   if (session?.user) {
     return aj.withRule(
       fixedWindow({
@@ -39,15 +38,20 @@ function getClient(session: Session | null) {
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   // Get the session
   const session = await auth();
 
   console.log("Session: ", session);
 
+  // Use the user ID if the user is logged in, otherwise use the IP address
+  const fingerprint = session?.user?.id ?? req.ip!;
+
   // The protect method returns a decision object that contains information
   // about the request.
-  const decision = await getClient(session).protect(req);
+  const decision = await getClient(session).protect(req, {
+    fingerprint,
+  });
 
   console.log("Arcjet decision: ", decision);
 
