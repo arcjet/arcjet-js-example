@@ -22,8 +22,8 @@ export default function IndexPage() {
               Arcjet
             </Link>{" "}
             helps developers protect their apps in just a few lines of code.
-            Implement rate limiting, bot protection, email verification & defend
-            against common attacks.
+            Implement rate limiting, bot protection, email verification &
+            defense against common attacks.
           </p>
           <p className="max-w-[700px] text-secondary-foreground">
             This application shows of the key features of Arcjet. The code is{" "}
