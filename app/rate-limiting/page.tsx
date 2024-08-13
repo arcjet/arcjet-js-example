@@ -86,6 +86,33 @@ export default async function IndexPage() {
 
       <Divider />
 
+      <div className={styles.Section}>
+        <h2 className="text-xl font-bold">See the code</h2>
+        <p className="text-secondary-foreground">
+          The{" "}
+          <Link
+            href="https://github.com/arcjet/arcjet-js-example/blob/main/app/rate-limiting/test/route.ts"
+            target="_blank"
+            rel="noreferrer"
+            className="font-bold decoration-1 underline-offset-2 hover:underline"
+          >
+            API route
+          </Link>{" "}
+          imports a{" "}
+          <Link
+            href="https://github.com/arcjet/arcjet-js-example/blob/main/lib/arcjet.ts"
+            target="_blank"
+            rel="noreferrer"
+            className="font-bold decoration-1 underline-offset-2 hover:underline"
+          >
+            centralized Arcjet client
+          </Link>{" "}
+          which sets base rules.
+        </p>
+      </div>
+
+      <Divider />
+
       <WhatNext deployed={siteKey != null} />
     </section>
   );
