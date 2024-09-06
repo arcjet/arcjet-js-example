@@ -16,8 +16,9 @@ const aj = arcjet.withRule(
     },
     bots: {
       mode: "LIVE",
-      // Block clients that we are sure are automated
-      block: ["AUTOMATED"],
+      // configured with a list of bots to allow from
+      // https://arcjet.com/bot-list
+      allow: [], // prevents bots from submitting the form
     },
     // It would be unusual for a form to be submitted more than 5 times in 10
     // minutes from the same IP address
@@ -70,7 +71,7 @@ export async function POST(req: NextRequest) {
       }
 
       if (decision.ip.hasCountry()) {
-        message += ` PS: Hello from ${decision.ip.country}.`;
+        message += ` PS: Hello to you in ${decision.ip.countryName}!`;
       }
 
       return NextResponse.json(
