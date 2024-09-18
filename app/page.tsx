@@ -66,6 +66,12 @@ export default function IndexPage() {
             >
               Attack protection
             </Link>
+            <Link
+              href="/sensitive-info"
+              className={buttonVariants({ variant: "default" })}
+            >
+              Sensitive Info
+            </Link>
           </div>
         </div>
       </div>

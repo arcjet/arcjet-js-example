@@ -29,5 +29,10 @@ export const siteConfig = {
       href: "/attack",
       key: "attack",
     },
+    {
+      title: "Sensitive Info",
+      href: "/sensitive-info",
+      key: "sensitive-info",
+    },
   ],
 };

@@ -10,35 +10,34 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { emailFormSchema } from "@/lib/formSchema";
+import { TextArea } from "./ui/textarea";
+import { sensitiveInfoFormSchema } from "@/lib/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-export function EmailForm() {
+export function SensitiveInfoForm() {
   // Allows us to set an error message on the form.
   const {
     setError,
     formState: { errors },
   } = useForm();
-  // Used to navigate to the welcome page after a successful form submission.
-  const router = useRouter();
 
   // Set up the form with the Zod schema and a resolver.
-  const form = useForm<z.infer<typeof emailFormSchema>>({
-    resolver: zodResolver(emailFormSchema),
+  const form = useForm<z.infer<typeof sensitiveInfoFormSchema>>({
+    resolver: zodResolver(sensitiveInfoFormSchema),
     defaultValues: {
-      email: "nonexistent@arcjet.ai",
+      payload:
+        "This message will be scanned for sensitive information when submitted",
     },
   });
 
   // Define a submit handler called when the form is submitted. It sends the
   // form data to an API endpoint and redirects to the welcome page on success.
-  async function onSubmit(values: z.infer<typeof emailFormSchema>) {
+  async function onSubmit(values: z.infer<typeof sensitiveInfoFormSchema>) {
+    console.log(values);
     // values is guaranteed to be of the correct type by the Zod schema.
-    const result = await fetch("/signup/test", {
+    const result = await fetch("/sensitive-info/test", {
       body: JSON.stringify(values),
       method: "POST",
       headers: {
@@ -46,10 +45,12 @@ export function EmailForm() {
       },
     });
 
-    // Check if the request was successful and redirect to the welcome page if
-    // so. Otherwise, set a root error message.
+    // Check if the request was successful
     if (result.ok) {
-      router.push("/welcome");
+      // Show success message
+      setError("root.serverSuccess", {
+        message: "Your message has been successfully submitted.",
+      });
     } else {
       const statusText = result?.statusText || "Service error";
       const error = await result.json();
@@ -66,20 +67,16 @@ export function EmailForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="email" // The name of the field in the form schema.
+          name="payload" // The name of the field in the form schema.
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Payload to scan</FormLabel>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="totoro@example.com"
+                <TextArea
+                  placeholder="This message will be scanned for sensitive information when submitted"
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                Just a test form - you won&apos;t receive any emails.
-              </FormDescription>
               <FormMessage />
               {errors.root?.serverError && (
                 <FormMessage>{errors.root.serverError.message}</FormMessage>
@@ -87,7 +84,7 @@ export function EmailForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Sign up</Button>
+        <Button type="submit">Scan payload</Button>
       </form>
     </Form>
   );

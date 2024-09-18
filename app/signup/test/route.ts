@@ -1,4 +1,4 @@
-import { formSchema } from "@/lib/formSchema";
+import { emailFormSchema } from "@/lib/formSchema";
 import arcjet, { protectSignup } from "@/lib/arcjet";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -33,7 +33,7 @@ const aj = arcjet.withRule(
 
 export async function POST(req: NextRequest) {
   const json = await req.json();
-  const data = formSchema.safeParse(json);
+  const data = emailFormSchema.safeParse(json);
 
   if (!data.success) {
     const { error } = data;
