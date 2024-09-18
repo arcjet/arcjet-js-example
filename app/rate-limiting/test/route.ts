@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 // Add rules to the base Arcjet instance outside of the handler function
 const aj = arcjet.withRule(
   // Shield detects suspicious behavior, such as SQL injection and cross-site
-  // scripting attacks. We want to ru nit on every request
+  // scripting attacks. We want to run it on every request
   shield({
     mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
   }),
