@@ -29,27 +29,9 @@ This example is deployed at
   Shield, which detects suspicious behavior, such as SQL injection and
   cross-site scripting attacks.
 
-## Deploy it now (table)
-
-|                        Vercel                         |                        Netlify                         |
-| :---------------------------------------------------: | :----------------------------------------------------: |
-| [![Deploy with Vercel][vercel_button]][vercel_deploy] | [![Deploy to Netlify][netlify_button]][netlify_deploy] |
-
-## Deploy it now (inline)
+## Deploy it now
 
 [![Deploy with Vercel][vercel_button]][vercel_deploy] &nbsp; &nbsp; [![Deploy to Netlify][netlify_button]][netlify_deploy]
-
-## Deploy it now (columns)
-
-[![Deploy with Vercel][vercel_button]][vercel_deploy]
-
-[![Deploy to Netlify][netlify_button]][netlify_deploy]
-
-## Deploy it now (columns with labels)
-
-Vercel [![Deploy with Vercel][vercel_button]][vercel_deploy]
-
-Netlify [![Deploy to Netlify][netlify_button]][netlify_deploy]
 
 ## Run locally
 
