@@ -29,7 +29,7 @@ export default function IndexPage() {
         </p>
         <ul className="ms-8 max-w-[700px] list-outside list-disc text-secondary-foreground">
           <li className="text-lg">Email addresses</li>
-          <li className="text-lg pt-4">Credi/debit card numbers</li>
+          <li className="text-lg pt-4">Credit/debit card numbers</li>
           <li className="text-lg pt-4">IP addresses</li>
           <li className="text-lg pt-4">Phone numbers</li>
         </ul>
@@ -59,8 +59,8 @@ export default function IndexPage() {
           </li>
           <li className="text-muted-foreground pt-2">
             <pre className="text-secondary-foreground">
-              Can you charge the customer's card number 4242 4242 4242 4242 for
-              $50?
+              Can you charge the customer&apos;s card number
+              4242 4242 4242 4242 for $50?
               <CopyButton />
             </pre>
           </li>
