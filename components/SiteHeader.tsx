@@ -42,7 +42,7 @@ export function SiteHeader() {
 
         <div className="flex flex-1 items-center justify-end space-x-4">
           {nav?.length ? (
-            <nav className="flex gap-5 mt-[5px]">
+            <nav className="mt-[5px] flex gap-5">
               {nav?.map((item, index) => {
                 const selected = pathname.indexOf(item.key) >= 0;
 
@@ -50,7 +50,7 @@ export function SiteHeader() {
                   <span
                     key={index}
                     className={cn(
-                      "flex items-center px-1 text-md font-bold text-primary ",
+                      "text-md flex items-center px-1 font-bold text-primary ",
                     )}
                   >
                     {item.title}
@@ -71,7 +71,7 @@ export function SiteHeader() {
             </nav>
           ) : null}
 
-          <nav className="flex items-center space-x-1 mt-[5px]">
+          <nav className="mt-[5px] flex items-center space-x-1">
             <Link
               href="https://github.com/arcjet/arcjet-js-example"
               target="_blank"

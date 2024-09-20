@@ -32,7 +32,7 @@ const WhatNext = React.forwardRef<HTMLDivElement, Props>(
         <div className="flex flex-col gap-8">
           {deployed ? (
             <>
-              <div className="flex gap-6 items-center">
+              <div className="flex items-center gap-6">
                 <Link
                   href="https://github.com/arcjet/arcjet-js/tree/main/examples"
                   target="_blank"
@@ -43,7 +43,7 @@ const WhatNext = React.forwardRef<HTMLDivElement, Props>(
                 <Link
                   href="https://docs.arcjet.com"
                   target="_blank"
-                  className="hover:underline font-bold decoration-1 underline-offset-2"
+                  className="font-bold decoration-1 underline-offset-2 hover:underline"
                 >
                   Arcjet docs
                 </Link>
@@ -55,7 +55,7 @@ const WhatNext = React.forwardRef<HTMLDivElement, Props>(
                   href="https://discord.gg/TPra6jqZDC"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:underline font-bold decoration-1 underline-offset-2"
+                  className="font-bold decoration-1 underline-offset-2 hover:underline"
                 >
                   Join our Discord
                 </Link>
@@ -80,7 +80,7 @@ const WhatNext = React.forwardRef<HTMLDivElement, Props>(
                 <Link
                   href="https://docs.arcjet.com"
                   target="_blank"
-                  className="hover:underline font-bold decoration-1 underline-offset-2"
+                  className="font-bold decoration-1 underline-offset-2 hover:underline"
                 >
                   Arcjet docs
                 </Link>
@@ -89,7 +89,7 @@ const WhatNext = React.forwardRef<HTMLDivElement, Props>(
                   href="https://discord.gg/TPra6jqZDC"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:underline font-bold decoration-1 underline-offset-2"
+                  className="font-bold decoration-1 underline-offset-2 hover:underline"
                 >
                   Join our Discord
                 </Link>

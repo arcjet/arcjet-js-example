@@ -32,7 +32,7 @@ const VisitDashboard = React.forwardRef<HTMLDivElement, Props>(
         pad={3}
         {...props}
       >
-        <p className="max-w-[700px] text-lg text-secondary-foreground mb-2">
+        <p className="mb-2 max-w-[700px] text-lg text-secondary-foreground">
           The requests will show in the Arcjet&apos;s dashboard once issued.
         </p>
         <Link
@@ -47,7 +47,7 @@ const VisitDashboard = React.forwardRef<HTMLDivElement, Props>(
             })
           }
         >
-          <LogoMarkSpark className="w-4 mr-2" />{" "}
+          <LogoMarkSpark className="mr-2 w-4" />{" "}
           <span className="mr-2">Visit your site dashboard</span>{" "}
           <IconArrowExternal classes={["w-4"]} />
         </Link>

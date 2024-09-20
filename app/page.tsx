@@ -17,7 +17,7 @@ export default function IndexPage() {
             <Link
               href="https://arcjet.com"
               target="_blank"
-              className="hover:underline font-bold decoration-1 underline-offset-2"
+              className="font-bold decoration-1 underline-offset-2 hover:underline"
             >
               Arcjet
             </Link>{" "}
@@ -31,7 +31,7 @@ export default function IndexPage() {
               href="https://github.com/arcjet/arcjet-js-example"
               target="_blank"
               rel="noreferrer"
-              className="hover:underline font-bold decoration-1 underline-offset-2"
+              className="font-bold decoration-1 underline-offset-2 hover:underline"
             >
               on GitHub
             </Link>

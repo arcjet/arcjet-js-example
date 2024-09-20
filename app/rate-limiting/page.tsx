@@ -32,7 +32,7 @@ export default async function IndexPage() {
           This page is protected by{" "}
           <Link
             href="https://docs.arcjet.com/bot-protection/concepts"
-            className="hover:underline font-bold decoration-1 underline-offset-2"
+            className="font-bold decoration-1 underline-offset-2 hover:underline"
           >
             Arcjet&apos;s rate limiting
           </Link>
@@ -72,7 +72,7 @@ export default async function IndexPage() {
           Rate limits can be{" "}
           <Link
             href="https://docs.arcjet.com/reference/nextjs#ad-hoc-rules"
-            className="hover:underline font-bold decoration-1 underline-offset-2"
+            className="font-bold decoration-1 underline-offset-2 hover:underline"
           >
             dynamically adjusted
           </Link>{" "}

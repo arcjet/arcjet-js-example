@@ -20,7 +20,7 @@ export default function IndexPage() {
           This form uses{" "}
           <Link
             href="https://docs.arcjet.com/signup-protection/concepts"
-            className="hover:underline font-bold decoration-1 underline-offset-2"
+            className="font-bold decoration-1 underline-offset-2 hover:underline"
           >
             Arcjet&apos;s signup form protection
           </Link>{" "}
@@ -31,11 +31,11 @@ export default function IndexPage() {
             Arcjet server-side email verification configured to block disposable
             providers and ensure that the domain has a valid MX record.
           </li>
-          <li className="text-lg pt-4">
+          <li className="pt-4 text-lg">
             Rate limiting set to 5 requests over a 2 minute sliding window - a
             reasonable limit for a signup form, but easily configurable.
           </li>
-          <li className="text-lg pt-4">
+          <li className="pt-4 text-lg">
             Bot protection to stop automated clients from submitting the form.
           </li>
         </ul>
@@ -61,13 +61,13 @@ export default function IndexPage() {
             <code className="text-secondary-foreground">invalid.@arcjet</code>{" "}
             – is an invalid email address.
           </li>
-          <li className="text-muted-foreground pt-2">
+          <li className="pt-2 text-muted-foreground">
             <code className="text-secondary-foreground">
               test@0zc7eznv3rsiswlohu.tk
             </code>{" "}
             – is from a disposable email provider.
           </li>
-          <li className="text-muted-foreground pt-2">
+          <li className="pt-2 text-muted-foreground">
             <code className="text-secondary-foreground">
               nonexistent@arcjet.ai
             </code>{" "}
