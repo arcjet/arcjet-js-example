@@ -31,7 +31,9 @@ This example is deployed at
 
 ## Deploy it now
 
-[![Deploy with Vercel][vercel_button]][vercel_deploy] &nbsp; &nbsp; [![Deploy to Netlify][netlify_button]][netlify_deploy]
+[![Deploy with Vercel][vercel_button]][vercel_deploy]
+&nbsp; &nbsp;
+[![Deploy to Netlify][netlify_button]][netlify_deploy]
 
 ## Run locally
 
