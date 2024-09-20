@@ -31,7 +31,7 @@ export default async function IndexPage() {
         <p className="max-w-[700px] text-lg">
           This page is protected by{" "}
           <Link
-            href="https://docs.arcjet.com/bot-protection/concepts"
+            href="https://docs.arcjet.com/rate-limiting/concepts"
             className="hover:underline font-bold decoration-1 underline-offset-2"
           >
             Arcjet&apos;s rate limiting
