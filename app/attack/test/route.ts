@@ -27,10 +27,20 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   } else if (decision.isErrored()) {
     console.error("Arcjet error:", decision.reason);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 },
-    );
+    if (decision.reason.message == "[unauthenticated] invalid key") {
+      return NextResponse.json(
+        {
+          message:
+            "Invalid Arcjet key. Is the ARCJET_KEY environment variable set?",
+        },
+        { status: 500 },
+      );
+    } else {
+      return NextResponse.json(
+        { v: "Internal server error: " + decision.reason.message },
+        { status: 500 },
+      );
+    }
   }
 
   return NextResponse.json({ message: "Hello world" });
