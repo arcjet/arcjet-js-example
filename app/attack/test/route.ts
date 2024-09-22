@@ -24,9 +24,12 @@ export async function GET(req: NextRequest) {
   // If the decision is denied, return a 403 Forbidden response. You can inspect
   // the decision results to customize the response.
   if (decision.isDenied()) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  } else if (decision.isErrored()) {
+    console.error("Arcjet error:", decision.reason);
     return NextResponse.json(
-      { error: "Forbidden", ip: decision.ip },
-      { status: 403 },
+      { error: "Internal server error" },
+      { status: 500 },
     );
   }
 

@@ -1,35 +1,44 @@
 import { formSchema } from "@/lib/formSchema";
-import arcjet, { protectSignup } from "@/lib/arcjet";
+import arcjet, { protectSignup, shield } from "@/lib/arcjet";
 import { NextRequest, NextResponse } from "next/server";
 
 // Add rules to the base Arcjet instance outside of the handler function
-const aj = arcjet.withRule(
-  // Arcjet's protectSignup rule is a combination of email validation, bot
-  // protection and rate limiting. Each of these can also be used separately
-  // on other routes e.g. rate limiting on a login route. See
-  // https://docs.arcjet.com/get-started
-  protectSignup({
-    email: {
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-      // Block emails that are disposable, invalid, or have no MX records
-      block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
-    },
-    bots: {
+const aj = arcjet
+  .withRule(
+    // Arcjet's protectSignup rule is a combination of email validation, bot
+    // protection and rate limiting. Each of these can also be used separately
+    // on other routes e.g. rate limiting on a login route. See
+    // https://docs.arcjet.com/get-started
+    protectSignup({
+      email: {
+        mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+        // Block emails that are disposable, invalid, or have no MX records
+        block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
+      },
+      bots: {
+        mode: "LIVE",
+        // configured with a list of bots to allow from
+        // https://arcjet.com/bot-list
+        allow: [], // prevents bots from submitting the form
+      },
+      // It would be unusual for a form to be submitted more than 5 times in 10
+      // minutes from the same IP address
+      rateLimit: {
+        // uses a sliding window rate limit
+        mode: "LIVE",
+        interval: "2m", // counts requests over a 10 minute sliding window
+        max: 5, // allows 5 submissions within the window
+      },
+    }),
+  )
+  // You can chain multiple rules, so we'll include shield
+  .withRule(
+    // Shield detects suspicious behavior, such as SQL injection and cross-site
+    // scripting attacks.
+    shield({
       mode: "LIVE",
-      // configured with a list of bots to allow from
-      // https://arcjet.com/bot-list
-      allow: [], // prevents bots from submitting the form
-    },
-    // It would be unusual for a form to be submitted more than 5 times in 10
-    // minutes from the same IP address
-    rateLimit: {
-      // uses a sliding window rate limit
-      mode: "LIVE",
-      interval: "2m", // counts requests over a 10 minute sliding window
-      max: 5, // allows 5 submissions within the window
-    },
-  }),
-);
+    }),
+  );
 
 export async function POST(req: NextRequest) {
   const json = await req.json();
@@ -115,6 +124,12 @@ export async function POST(req: NextRequest) {
     } else {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
+  } else if (decision.isErrored()) {
+    console.error("Arcjet error:", decision.reason);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 
   return NextResponse.json({

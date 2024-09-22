@@ -1,18 +1,27 @@
-import arcjet, { detectBot } from "@/lib/arcjet";
-import { NextResponse, NextRequest } from "next/server";
+import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
+import { NextRequest, NextResponse } from "next/server";
 
 // Opt out of caching
 export const dynamic = "force-dynamic";
 
 // Add rules to the base Arcjet instance outside of the handler function
-const aj = arcjet.withRule(
-  detectBot({
-    mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-    // configured with a list of bots to allow from
-    // https://arcjet.com/bot-list
-    allow: [], // blocks all automated clients
-  }),
-);
+const aj = arcjet
+  .withRule(
+    detectBot({
+      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+      // configured with a list of bots to allow from
+      // https://arcjet.com/bot-list
+      allow: [], // blocks all automated clients
+    }),
+  )
+  // You can chain multiple rules, so we'll include a rate limit
+  .withRule(
+    fixedWindow({
+      mode: "LIVE",
+      max: 100,
+      window: "60s",
+    }),
+  );
 
 export async function GET(req: NextRequest) {
   // The protect method returns a decision object that contains information
@@ -22,12 +31,17 @@ export async function GET(req: NextRequest) {
 
   console.log("Arcjet decision: ", decision);
 
-  // If the decision is denied, return a 403 Forbidden response. You can inspect
+  // If the decision is denied, return an appropriate response. You can inspect
   // the decision results to customize the response.
-  if (decision.isDenied()) {
+  if (decision.isDenied() && decision.reason.isBot()) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  } else if (decision.isDenied() && decision.reason.isRateLimit()) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  } else if (decision.isErrored()) {
+    console.error("Arcjet error:", decision.reason);
     return NextResponse.json(
-      { error: "Forbidden", ip: decision.ip },
-      { status: 403 },
+      { error: "Internal server error" },
+      { status: 500 },
     );
   }
 
