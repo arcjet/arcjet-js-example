@@ -3,10 +3,11 @@ import arcjet, {
   fixedWindow,
   protectSignup,
   shield,
+  slidingWindow,
 } from "@arcjet/next";
 
 // Re-export the rules to simplify imports inside handlers
-export { detectBot, fixedWindow, protectSignup, shield };
+export { detectBot, fixedWindow, protectSignup, shield, slidingWindow };
 
 // Create a base Arcjet instance for use by each handler
 export default arcjet({
