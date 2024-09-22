@@ -23,7 +23,7 @@ updates:
       # Arcjet packages are grouped alone due to not being major/minor/patch yet
       arcjet-js:
         patterns:
-          - "arcjet"
+          - arcjet
           - "@arcjet/*"
     ignore:
       - dependency-name: eslint
