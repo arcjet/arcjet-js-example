@@ -37,7 +37,7 @@
     "@types/styled-components": "^5.1.34",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "lucide-react": "0.445.0",
+    "lucide-react": "0.446.0",
     "next": "^14.2.13",
     "next-auth": "^5.0.0-beta.21",
     "next-themes": "^0.3.0",
