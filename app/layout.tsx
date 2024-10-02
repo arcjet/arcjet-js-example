@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.scss";
 import type { Viewport } from "next";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -45,7 +46,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
+        <head>
+          <Script
+            defer
+            src="https://plausible.io/js/script.js"
+            data-domain="arcjet.com"
+          />
+        </head>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
