@@ -1,4 +1,4 @@
-import { formSchema } from "@/lib/formSchema";
+import { formSchema } from "@/app/signup/schema";
 import arcjet, { protectSignup, shield } from "@/lib/arcjet";
 import { NextRequest, NextResponse } from "next/server";
 

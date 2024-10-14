@@ -12,9 +12,8 @@ import Link from "next/link";
 import styles from "@/components/elements/PageShared.module.scss";
 
 export const metadata: Metadata = {
-  title: "Arcjet rate limit example",
-  description:
-    "An example of Arcjet's rate limiting with different limits depending on authentication.",
+  title: "Rate limiting example",
+  description: "An example of Arcjet's rate limiting for Next.js.",
 };
 
 export default async function IndexPage() {

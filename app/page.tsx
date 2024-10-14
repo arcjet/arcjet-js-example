@@ -13,6 +13,9 @@ export default function IndexPage() {
     <section className={styles.Content}>
       <div className={styles.Section}>
         <div className="flex max-w-[980px] flex-col items-start gap-6">
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+            Arcjet Next.js example app
+          </h1>
           <p className="max-w-[700px] text-lg">
             <Link
               href="https://arcjet.com"
@@ -21,12 +24,12 @@ export default function IndexPage() {
             >
               Arcjet
             </Link>{" "}
-            helps developers protect their apps in just a few lines of code.
-            Implement rate limiting, bot protection, email verification &
-            defense against common attacks.
+            helps developers protect their apps in just a few lines of code. Bot
+            detection. Rate limiting. Email validation. Attack protection. Data
+            redaction. A developer-first approach to security.
           </p>
           <p className="max-w-[700px] text-secondary-foreground">
-            This application shows of the key features of Arcjet. The code is{" "}
+            This is an example Next.js application using Arcjet. The code is{" "}
             <Link
               href="https://github.com/arcjet/arcjet-js-example"
               target="_blank"
@@ -65,6 +68,12 @@ export default function IndexPage() {
               className={buttonVariants({ variant: "default" })}
             >
               Attack protection
+            </Link>
+            <Link
+              href="/sensitive-info"
+              className={buttonVariants({ variant: "default" })}
+            >
+              Sensitive info
             </Link>
           </div>
         </div>

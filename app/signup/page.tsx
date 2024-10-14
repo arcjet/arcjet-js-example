@@ -3,9 +3,16 @@ import VisitDashboard from "@/components/compositions/VisitDashboard";
 import WhatNext from "@/components/compositions/WhatNext";
 import useSiteKey from "@/components/effects/useSiteKey";
 import Divider from "@/components/elements/Divider";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import styles from "@/components/elements/PageShared.module.scss";
+
+export const metadata: Metadata = {
+  title: "Signup form protection example",
+  description:
+    "An example of Arcjet's signup form protection for Next.js which includes email verification, rate limiting, and bot protection.",
+};
 
 export default function IndexPage() {
   const { siteKey } = useSiteKey();
