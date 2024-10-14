@@ -19,8 +19,6 @@ export const metadata: Metadata = {
 export default async function IndexPage() {
   const session = await auth();
 
-  const { siteKey } = useSiteKey();
-
   return (
     <section className={styles.Content}>
       <div className={styles.Section}>
@@ -79,8 +77,6 @@ export default async function IndexPage() {
         </p>
 
         {session?.user ? <SignOut /> : <SignIn />}
-
-        {siteKey && <VisitDashboard />}
       </div>
 
       <Divider />
@@ -112,7 +108,7 @@ export default async function IndexPage() {
 
       <Divider />
 
-      <WhatNext deployed={siteKey != null} />
+      <WhatNext />
     </section>
   );
 }
