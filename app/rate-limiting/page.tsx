@@ -12,15 +12,12 @@ import Link from "next/link";
 import styles from "@/components/elements/PageShared.module.scss";
 
 export const metadata: Metadata = {
-  title: "Arcjet rate limit example",
-  description:
-    "An example of Arcjet's rate limiting with different limits depending on authentication.",
+  title: "Rate limiting example",
+  description: "An example of Arcjet's rate limiting for Next.js.",
 };
 
 export default async function IndexPage() {
   const session = await auth();
-
-  const { siteKey } = useSiteKey();
 
   return (
     <section className={styles.Content}>
@@ -80,8 +77,6 @@ export default async function IndexPage() {
         </p>
 
         {session?.user ? <SignOut /> : <SignIn />}
-
-        {siteKey && <VisitDashboard />}
       </div>
 
       <Divider />
@@ -113,7 +108,7 @@ export default async function IndexPage() {
 
       <Divider />
 
-      <WhatNext deployed={siteKey != null} />
+      <WhatNext />
     </section>
   );
 }

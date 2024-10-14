@@ -2,15 +2,14 @@ import VisitDashboard from "@/components/compositions/VisitDashboard";
 import WhatNext from "@/components/compositions/WhatNext";
 import useSiteKey from "@/components/effects/useSiteKey";
 import Divider from "@/components/elements/Divider";
+import styles from "@/components/elements/PageShared.module.scss";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import styles from "@/components/elements/PageShared.module.scss";
-
 export const metadata: Metadata = {
-  title: "Arcjet attack protection",
+  title: "Attack protection example",
   description:
-    "Arcjet Shield detects suspicious behavior, such as SQL injection and cross-site scripting attacks.",
+    "An example of Arcjet's attack protection for Next.js. Protect Next.js against SQL injection, cross-site scripting, and other attacks.",
 };
 
 export default function IndexPage() {

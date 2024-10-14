@@ -1,23 +1,22 @@
 "use client";
 
+import { formSchema } from "@/app/sensitive-info/schema";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { formSchema } from "@/app/signup/schema";
+import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-export function EmailForm() {
+export function SupportForm() {
   // Allows us to set an error message on the form.
   const {
     setError,
@@ -30,7 +29,8 @@ export function EmailForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "nonexistent@arcjet.ai",
+      supportMessage:
+        "I ordered a hat from your store and would like to request a refund. My credit card number is 4111111111111111 ",
     },
   });
 
@@ -38,7 +38,7 @@ export function EmailForm() {
   // form data to an API endpoint and redirects to the welcome page on success.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // values is guaranteed to be of the correct type by the Zod schema.
-    const result = await fetch("/signup/test", {
+    const result = await fetch("/sensitive-info/test", {
       body: JSON.stringify(values),
       method: "POST",
       headers: {
@@ -49,14 +49,14 @@ export function EmailForm() {
     // Check if the request was successful and redirect to the welcome page if
     // so. Otherwise, set a root error message.
     if (result.ok) {
-      router.push("/signup/submitted");
+      router.push("/sensitive-info/submitted");
     } else {
       const statusText = result?.statusText || "Service error";
       const error = await result.json();
       const errorMessage = error?.message || statusText;
 
       setError("root.serverError", {
-        message: `We couldn't sign you up: ${errorMessage}`,
+        message: `We couldn't submit the form: ${errorMessage}`,
       });
     }
   }
@@ -66,20 +66,17 @@ export function EmailForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="email" // The name of the field in the form schema.
+          name="supportMessage" // The name of the field in the form schema.
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Message</FormLabel>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="totoro@example.com"
+                <Textarea
+                  placeholder="Please enter your message."
+                  className="h-24 w-80 resize-none"
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                Just a test form - you won&apos;t receive any emails.
-              </FormDescription>
               <FormMessage />
               {errors.root?.serverError && (
                 <FormMessage>{errors.root.serverError.message}</FormMessage>
@@ -87,7 +84,7 @@ export function EmailForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Sign up</Button>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   );

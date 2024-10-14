@@ -1,6 +1,6 @@
 {
   "name": "arcjet-js-example",
-  "description": "Arcjet JS example app. Arcjet helps developers protect their apps in just a few lines of code.",
+  "description": "Arcjet Next.js example app. Arcjet helps developers protect their apps in just a few lines of code. Bot detection. Rate limiting. Email validation. Attack protection. Data redaction. A developer-first approach to security.",
   "license": "Apache-2.0",
   "homepage": "https://arcjet.com",
   "repository": {
@@ -37,7 +37,7 @@
     "@types/styled-components": "^5.1.34",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "lucide-react": "0.451.0",
+    "lucide-react": "0.452.0",
     "next": "^14.2.15",
     "next-auth": "^5.0.0-beta.22",
     "next-themes": "^0.3.0",
