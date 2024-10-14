@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     const { error } = data;
 
     return NextResponse.json(
-      { message: "Invalid request", error },
+      { message: "invalid request", error },
       { status: 400 },
     );
   }
@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
       if (reset === undefined) {
         return NextResponse.json(
           {
-            message: "Too many requests. Please try again later.",
+            message: "too many requests. Please try again later.",
             reason: decision.reason,
           },
           { status: 429 },
@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
       if (minutes > 1) {
         return NextResponse.json(
           {
-            message: `Too many requests. Please try again in ${minutes} minutes.`,
+            message: `too many requests. Please try again in ${minutes} minutes.`,
             reason: decision.reason,
           },
           { status: 429 },
@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
       } else {
         return NextResponse.json(
           {
-            message: `Too many requests. Please try again in ${seconds} seconds.`,
+            message: `too many requests. Please try again in ${seconds} seconds.`,
             reason: decision.reason,
           },
           { status: 429 },
@@ -130,13 +130,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           message:
-            "Invalid Arcjet key. Is the ARCJET_KEY environment variable set?",
+            "invalid Arcjet key. Is the ARCJET_KEY environment variable set?",
         },
         { status: 500 },
       );
     } else {
       return NextResponse.json(
-        { message: "Internal server error: " + decision.reason.message },
+        { message: "internal server error: " + decision.reason.message },
         { status: 500 },
       );
     }

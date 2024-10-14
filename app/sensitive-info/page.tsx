@@ -35,7 +35,7 @@ export default function IndexPage() {
           patterns.
         </p>
         <p className="max-w-[700px] text-secondary-foreground">
-          Data is processed and analyzed entirely on your server so no sensitive
+          The request is analyzed entirely on your server so no sensitive
           information is sent to Arcjet.
         </p>
       </div>

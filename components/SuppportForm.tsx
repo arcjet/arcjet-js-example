@@ -30,7 +30,7 @@ export function SupportForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       supportMessage:
-        "I ordered a hat from your store and would like to request a refund. My credit card number is 4111111111111111.",
+        "I ordered a hat from your store and would like to request a refund. My credit card number is 4111111111111111 ",
     },
   });
 
@@ -56,7 +56,7 @@ export function SupportForm() {
       const errorMessage = error?.message || statusText;
 
       setError("root.serverError", {
-        message: `We couldn't sign you up: ${errorMessage}`,
+        message: `We couldn't submit the form: ${errorMessage}`,
       });
     }
   }

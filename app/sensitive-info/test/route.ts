@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   if (decision.isDenied()) {
     if (decision.reason.isSensitiveInfo()) {
       const message =
-        "Please do not include credit card numbers in your message.";
+        "please do not include credit card numbers in your message.";
 
       return NextResponse.json(
         { message, reason: decision.reason },
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           message:
-            "Invalid Arcjet key. Is the ARCJET_KEY environment variable set?",
+            "invalid Arcjet key. Is the ARCJET_KEY environment variable set?",
         },
         { status: 500 },
       );
@@ -66,12 +66,10 @@ export async function POST(req: NextRequest) {
     const { error } = data;
 
     return NextResponse.json(
-      { message: "Invalid request", error },
+      { message: "invalid request", error },
       { status: 400 },
     );
   }
-
-  console.log("Form submission:", data.data);
 
   return NextResponse.json({
     ok: true,
