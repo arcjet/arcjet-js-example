@@ -62,6 +62,12 @@ npm run dev
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Need help?
+
+Check out [the docs](https://docs.arcjet.com/), [contact
+support](https://docs.arcjet.com/support), or [join our Discord
+server](https://arcjet.com/discord).
+
 ## Stack
 
 - Auth: [Auth.js](https://authjs.dev/)
