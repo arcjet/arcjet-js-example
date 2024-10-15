@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
 
   // Use the IP analysis to customize the response based on the country
   if (decision.ip.hasCountry() && decision.ip.country == "JP") {
-    return NextResponse.json({ message: "Konichiwa!" });
+    return NextResponse.json({ message: "Konnichiwa!" });
   }
 
   // Always deny requests from VPNs
