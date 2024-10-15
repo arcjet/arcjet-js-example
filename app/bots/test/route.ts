@@ -31,6 +31,16 @@ export async function GET(req: NextRequest) {
 
   console.log("Arcjet decision: ", decision);
 
+  // Use the IP analysis to customize the response based on the country
+  if (decision.ip.hasCountry() && decision.ip.country == "JP") {
+    return NextResponse.json({ message: "Konichiwa!" });
+  }
+
+  // Always deny requests from VPNs
+  if (decision.ip.isVpn()) {
+    return NextResponse.json({ error: "VPNs are forbidden" }, { status: 403 });
+  }
+
   // If the decision is denied, return an appropriate response. You can inspect
   // the decision results to customize the response.
   if (decision.isDenied() && decision.reason.isBot()) {
