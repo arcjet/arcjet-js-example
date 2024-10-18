@@ -73,7 +73,7 @@ export function SiteHeader() {
 
           <nav className="mt-[5px] flex items-center space-x-1">
             <Link
-              href="https://github.com/arcjet/arcjet-js-example"
+              href="https://github.com/arcjet/example-nextjs"
               target="_blank"
               rel="noreferrer"
             >

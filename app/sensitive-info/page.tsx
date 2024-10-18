@@ -59,7 +59,7 @@ export default function IndexPage() {
         <p className="text-secondary-foreground">
           The{" "}
           <Link
-            href="https://github.com/arcjet/arcjet-js-example/blob/main/app/sensitive-info/test/route.ts"
+            href="https://github.com/arcjet/example-nextjs/blob/main/app/sensitive-info/test/route.ts"
             target="_blank"
             rel="noreferrer"
             className="font-bold decoration-1 underline-offset-2 hover:underline"
@@ -68,7 +68,7 @@ export default function IndexPage() {
           </Link>{" "}
           imports a{" "}
           <Link
-            href="https://github.com/arcjet/arcjet-js-example/blob/main/lib/arcjet.ts"
+            href="https://github.com/arcjet/example-nextjs/blob/main/lib/arcjet.ts"
             target="_blank"
             rel="noreferrer"
             className="font-bold decoration-1 underline-offset-2 hover:underline"
